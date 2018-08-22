@@ -1,0 +1,18 @@
+[submodule "roles/basicSetup"]
+	path = roles/basicSetup
+	url = https://github.com/fabrizio2210/ansible-role-basicSetup.git
+[submodule "roles/glusterForDocker"]
+	path = roles/glusterForDocker
+	url = https://github.com/fabrizio2210/ansible-role-glusterForDocker.git
+[submodule "roles/dockerRaspbian"]
+	path = roles/dockerRaspbian
+	url = https://github.com/fabrizio2210/ansible-role-dockerRaspbian.git
+[submodule "roles/docker-swarm"]
+	path = roles/docker-swarm
+	url = https://github.com/fabrizio2210/ansible-dockerswarm.git
+[submodule "roles/deploy-service"]
+	path = roles/deploy-service
+	url = https://github.com/fabrizio2210/ansible-role-deployService.git
+[submodule "roles/keepalived"]
+	path = roles/keepalived
+	url = https://github.com/fabrizio2210/ansible-keepalived.git
