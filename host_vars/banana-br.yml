@@ -1,4 +1,3 @@
-ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -q root@augusto.no-ip.org -p 6522"'
 #  Basic setup
 password: $6$qSgeopZ0y1hzjcRe$Dg/GNHPSywdBhMyGKNg3K/IsZP/g4zIBHMxm2s5x.4TgmcEP5CdP/vA1NddHQrMm72RlKg7rcyJATUzbHRN6U.
 UUID_disk: 69cb1744-f543-44f2-abf7-a3d46f392e2c
