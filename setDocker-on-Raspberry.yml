@@ -7,7 +7,7 @@
     - glusterForDocker
     - dockerRaspbian
     - docker-swarm
-    - { role: deploy-service, run_once: true, name_service: "webmanager", image: "portainer/portainer", ports_flags: "-p 9000:9000", additional_flags: "--constraint 'node.role == manager'", volumes_flags: "--mount type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock --mount type=bind,src=/mnt/cluster/portainer,dst=/data" }
+    - { role: deploy-service, run_once: true, name_service: "webmanager", image: "portainer/portainer", ports_flags: "-p 9000:9000", additional_flags: "--constraint 'node.role == manager' --restart always", volumes_flags: "--mount type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock --mount type=bind,src=/mnt/cluster/portainer,dst=/data" }
     - { role: keepalived, keepalived_shared_ip: 192.168.4.253 }
 
 
