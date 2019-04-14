@@ -1,0 +1,10 @@
+[docker-bare_metal]
+node-docker-01 ansible_host=192.168.122.10 ansible_user=vagrant ansible_become=yes ansible_ssh_private_key_file=.vagrant/machines/docker1/libvirt/private_key
+node-docker-02 ansible_host=192.168.122.11 ansible_user=vagrant ansible_become=yes ansible_ssh_private_key_file=.vagrant/machines/docker2/libvirt/private_key
+node-docker-03 ansible_host=192.168.122.12 ansible_user=vagrant ansible_become=yes ansible_ssh_private_key_file=.vagrant/machines/docker3/libvirt/private_key
+
+[docker_swarm_manager:children]
+docker-bare_metal
+
+[all:vars]
+glusterForDocker_disk=/dev/vdb
