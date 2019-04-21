@@ -1,0 +1,8 @@
+[docker-bare_metal:children]
+vagrant
+[docker_swarm_manager:children]
+vagrant
+
+[all:vars]
+glusterForDocker_disk=/dev/vdb
+
