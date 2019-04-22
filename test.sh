@@ -31,15 +31,16 @@ vagrant up
 
 # Set infrastructure
 
-ansible-playbook -i vagrant-hosts.list setDocker-on-Raspberry.yml
+#ansible-playbook -i vagrant-hosts.list setDocker-on-Raspberry.yml
+ansible-playbook -i vagrant.py -i vagrant-groups.list setDocker-on-Raspberry.yml
 
-for _host in ${dockerList[@]} ; do
-  # Set a single static IP
-  eval ssh  -i \$${_host}Key -o StrictHostKeyChecking=no \$${_host}User@\$${_host}IP \"sudo ip addr flush eth1 \; sleep 1 \; sudo systemctl restart systemd-networkd.service\"
-  eval ssh  -i \$${_host}Key -o StrictHostKeyChecking=no \$${_host}User@\$${_host}IP \"pgrep dhclient \&\& sudo killall dhclient \|\| echo nessun dhclient \"
-
-
-done
+#for _host in ${dockerList[@]} ; do
+#  # Set a single static IP
+#  eval ssh  -i \$${_host}Key -o StrictHostKeyChecking=no \$${_host}User@\$${_host}IP \"sudo ip addr flush eth1 \; sleep 1 \; sudo systemctl restart systemd-networkd.service\"
+#  eval ssh  -i \$${_host}Key -o StrictHostKeyChecking=no \$${_host}User@\$${_host}IP \"pgrep dhclient \&\& sudo killall dhclient \|\| echo nessun dhclient \"
+#
+#
+#done
 
 
 [ -n "$tempDir" ] && rm -rf "$tempDir"
