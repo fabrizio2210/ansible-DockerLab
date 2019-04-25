@@ -1,14 +1,15 @@
 ---
 
 - hosts: docker-bare_metal
+  any_errors_fatal: true
   become: true
   roles:
     - { role: basicSetup, password: $6$LLQLgu6cn$GDxCSjtaTf8J4nhl8hemZM3kWjGK5nwwWolDHtr7cTwjs6taE7pk0Uv1u5cG9rfqB.gG5Gn5JNdF5zrmW8YBX1 }
     - glusterForDocker
     - dockerRaspbian
     - docker-swarm
-    - { role: deploy-service, run_once: true, name_service: "webmanager", image: "portainer/portainer", ports_flags: "-p 9000:9000", additional_flags: "--constraint 'node.role == manager' --restart always", volumes_flags: "--mount type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock --mount type=bind,src=/mnt/cluster/portainer,dst=/data" }
-    - { role: keepalived, keepalived_shared_ip: 192.168.4.253 }
+    - { role: deploy-service, run_once: true, name_service: "webmanager", image: "portainer/portainer", ports_flags: "-p 9000:9000", additional_flags: "--constraint 'node.role == manager' --restart-condition any", volumes_flags: "--mount type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock --mount type=bind,src=/mnt/cluster/portainer,dst=/data" }
+    - { role: keepalived, keepalived_shared_ip: 192.168.4.253, keepalived_daemon_checked: "dockerd"}
 
 
 #  tasks:
