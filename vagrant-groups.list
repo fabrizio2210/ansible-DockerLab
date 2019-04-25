@@ -5,4 +5,4 @@ vagrant
 
 [all:vars]
 glusterForDocker_disk=/dev/vdb
-keepalived_shared_ip=192.168.122.253
+keepalived_shared_ip=192.168.121.253
