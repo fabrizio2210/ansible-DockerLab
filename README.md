@@ -3,14 +3,15 @@
 Infrastructure where you can test Docker stacks/services having a shared filesystem and a Virtual IP.
 The playbook install a Docker swarm on several nodes and setup gluster to share configuration.
 
+![Schema](/images/DockerLab.png)
+
 ## Getting Started
 
 You can play the playbook against a list of nodes prepared in an inventory
 
 ### Prerequisites
 
-To deploy you need:
-- Ansible
+To deploy you need Ansible.
 
 The inventory should contain the group of nodes _docker-bare_metal_ and the swarm managers _docker_swarm_manager_. Normally they coincide.
 
@@ -55,6 +56,7 @@ If you want to test the deploy in a virtual environment you need:
 - Ansible
 
 You can follow these guides for Vagrant/libvirt:
+
 https://linuxsimba.com/vagrant-libvirt-install
 https://docs.cumulusnetworks.com/display/VX/Vagrant+and+Libvirt+with+KVM+or+QEMU
 
