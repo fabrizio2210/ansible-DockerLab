@@ -72,6 +72,8 @@ cd ansible-DockerLab
 ./test.sh
 ```
 
+![create test environment](/images/tty_create_test_env.gif)
+
 Then you can access with browser to Portainer on port 9000 using the defined IP:
 ```
 http://192.168.121.253:9000
