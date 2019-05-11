@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
     node1.vm.box_check_update = false
     node1.vm.synced_folder '.', '/vagrant', :disabled => true
     node1.vm.provider :libvirt do |domain|
-      domain.memory = 512
+      domain.memory = 1024
       domain.nested = true
       domain.storage :file, :size => '1G'
     end
@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
     node2.vm.box_check_update = false
     node2.vm.synced_folder '.', '/vagrant', :disabled => true
     node2.vm.provider :libvirt do |domain|
-      domain.memory = 512
+      domain.memory = 1024
       domain.nested = true
       domain.storage :file, :size => '1G'
     end
@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
     node3.vm.box_check_update = false
     node3.vm.synced_folder '.', '/vagrant', :disabled => true
     node3.vm.provider :libvirt do |domain|
-      domain.memory = 512
+      domain.memory = 1024
       domain.nested = true
       domain.storage :file, :size => '1G'
     end
@@ -58,7 +58,7 @@ Vagrant.configure("2") do |config|
     node4.vm.box_check_update = false
     node4.vm.synced_folder '.', '/vagrant', :disabled => true
     node4.vm.provider :libvirt do |domain|
-      domain.memory = 512
+      domain.memory = 1024
       domain.nested = true
       domain.storage :file, :size => '1G'
     end
