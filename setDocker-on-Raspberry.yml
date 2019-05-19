@@ -12,22 +12,3 @@
     - { role: keepalived, keepalived_daemon_checked: "dockerd"}
 
 
-#  tasks:
-#    - name: Avvia Portainer
-#      docker_service:
-#        project_name: portainer
-#        definition:
-#          version: '2'
-#          services:
-#            webmanager:
-#              image: 'portainer/portainer:linux-arm'
-#              ports:
-#                - "9000:9000"
-#              volumes:
-#               - "/var/run/docker.sock:/var/run/docker.sock"
-#               - "/mnt/cluster/portainer:/data"
-#      when: "inventory_hostname == groups['docker_swarm_manager'][0]"
-#      register: output
-#
-#    - debug:
-#       var: output
