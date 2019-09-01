@@ -10,5 +10,35 @@
     - docker-swarm
     - { role: deploy-service, run_once: true, name_service: "webmanager", image: "portainer/portainer", ports_flags: "-p 9000:9000", additional_flags: "--constraint 'node.role == manager' --restart-condition any", volumes_flags: "--mount type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock --mount type=bind,src=/mnt/cluster/portainer,dst=/data" }
     - { role: keepalived, keepalived_daemon_checked: "dockerd"}
+  tasks:
+    - name: create network for async
+      docker_network:
+        name: network-async
+        driver: overlay
+      run_once: true
+    - name: deploy async service
+      docker_swarm_service:
+        name: asyncer
+        image: fabrizio2210/docker_volume_synchronizer
+        networks:
+          - network-async
+        mounts:
+          - source: /var/run/docker.sock 
+            target: /var/run/docker.sock
+            type: bind
+          - source: /mnt/async/
+            target: /opt/data
+            type: bind
+        mode: global
+        update_config:
+          parallelism: 0
+        command: wrapper.sh
+        args:
+          - "-k"
+          - "y7laMv1RAIJOWft3nRKmHnBYCptjEmNKQ8OrpaltFC1fLneJjmLwe96VEaOla5en"
+          - "-d"
+          - "/opt/data/"
+      run_once: true
+
 
 
