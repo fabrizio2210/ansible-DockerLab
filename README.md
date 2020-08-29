@@ -58,7 +58,24 @@ If you want to test the deploy in a virtual environment you need:
 You can follow these guides for Vagrant/libvirt:
 
 https://linuxsimba.com/vagrant-libvirt-install
+
 https://docs.cumulusnetworks.com/display/VX/Vagrant+and+Libvirt+with+KVM+or+QEMU
+
+https://docs.cumulusnetworks.com/cumulus-vx/Getting-Started/Libvirt-and-KVM-QEMU/
+
+In summary the steps to do are:
+```
+sudo apt install vagrant vagrant-libvirt
+
+sudo apt install libvirt-daemon-system  python3-distutils  python3-gi-cairo  python3-lib2to3  python3-libvirt qemu-kvm   spice-client-glib-usb-acl-helper  systemd-container    virt-manager  virt-viewer   virtinst  libgovirt-common   gir1.2-gtk-vnc-2.0
+
+sudo systemctl restart libvirtd
+
+# logout and login, you should have the libvirt group
+
+sudo apt install python3-paramiko python3-venv python3-pip
+
+```
 
 I am using debian/jessie64 box. 
 
