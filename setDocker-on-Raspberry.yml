@@ -1,6 +1,6 @@
 ---
 
-- hosts: docker-bare_metal
+- hosts: docker_bare_metal
   any_errors_fatal: true
   become: true
   roles:
