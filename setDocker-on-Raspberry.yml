@@ -5,11 +5,17 @@
   become: true
   roles:
     - { role: basicSetup, password: $6$LLQLgu6cn$GDxCSjtaTf8J4nhl8hemZM3kWjGK5nwwWolDHtr7cTwjs6taE7pk0Uv1u5cG9rfqB.gG5Gn5JNdF5zrmW8YBX1 }
-#    - glusterForDocker
-    - { role: dockerRaspbian, no_gluster: true }
+    - glusterForDocker
+    - { role: dockerRaspbian, no_gluster: false }
     - docker-swarm
     - { role: keepalived, keepalived_daemon_checked: "docker-proxy"}
   tasks:
+    - name: create directory for portainer
+      file:
+        path: /mnt/cluster/portainer
+        state: directory
+        mode: '0755'
+      run_once: true
     - name: Create portainer stack
       docker_stack:
         state: present
@@ -30,15 +36,9 @@
                   - source: /var/run/docker.sock
                     target: /var/run/docker.sock
                     type: bind
-                  - source: portainer_config
+                  - source: /mnt/cluster/portainer
                     target: /data
-                    type: volume
-            volumes:
-              portainer_config:
-                driver_opts:
-                  type: nfs
-                  o: "addr=192.168.4.1,nolock,soft,rw"
-                  device: ":/mnt/HDD/docker/portainer/"
+                    type: bind
       run_once: true
     - name: create directory for async
       file:
